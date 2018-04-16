@@ -26,23 +26,23 @@ private RedisService service;
 		return "Cocktail";
 	}
 	
-	@PostMapping("/cocktail")
-	public String setCocktail(@RequestParam("cocktailName") String cocktailName,
-			@RequestParam("ing1") String ing1,
-			@RequestParam("ing2") String ing2,
-			@RequestParam("ing3") String ing3,
-			@RequestParam("ing4") String ing4) {
+	@PostMapping("/inhaalexamen")
+	public String setCocktail(
+			@RequestParam("ing1") String student,
+			@RequestParam("ing2") String exam,
+			@RequestParam("ing3") String reason,
+			@RequestParam("ing4") String date) {
 		
-		String key = "cocktails:" + cocktailName;
+		String key = "inhaalexamen:" + student;
 		Map<String, String> ingredienten = new HashMap<String,String>();
 		
-		ingredienten.put("Ingredient1", ing1);
-		ingredienten.put("Ingredient2", ing2);
-		ingredienten.put("Ingredient3", ing3);
-		ingredienten.put("Ingredient4", ing4);
+		ingredienten.put("Ingredient1", student);
+		ingredienten.put("Ingredient2", exam);
+		ingredienten.put("Ingredient3", reason);
+		ingredienten.put("Ingredient4", date);
 		service.hset(key, ingredienten);
 		
-		return "Cocktail";
+		return "Inhaalexamen";
 	}
 	
 	@RequestMapping("/list")
